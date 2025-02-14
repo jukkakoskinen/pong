@@ -142,10 +142,12 @@ update_game :: proc(g: ^Game, delta: f32) {
 	case .Pause:
 		if rl.IsKeyPressed(rl.KeyboardKey.SPACE) {
 			g.state = .Play
+			return
 		}
 	case .Play:
 		if rl.IsKeyPressed(rl.KeyboardKey.SPACE) {
 			g.state = .Pause
+			return
 		}
 
 		g.ball.position += g.ball.velocity * delta
