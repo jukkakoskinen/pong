@@ -246,7 +246,6 @@ draw_game :: proc(g: Game) {
 main :: proc() {
 	rl.InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Pong")
 	defer rl.CloseWindow()
-	rl.SetExitKey(rl.KeyboardKey.KEY_NULL)
 	rl.SetTargetFPS(60)
 
 	rl.InitAudioDevice()
