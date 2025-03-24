@@ -2,7 +2,6 @@ package main
 
 import rl "vendor:raylib"
 
-
 SCREEN_WIDTH :: 560
 SCREEN_HEIGHT :: 320
 
@@ -14,7 +13,6 @@ PADDLE_WIDTH :: 16
 PADDLE_HEIGHT :: 64
 
 THUD_WAV :: #load("../res/thud.wav")
-
 
 Paddle :: struct {
 	score:    u32,
@@ -46,7 +44,6 @@ get_paddle_rect :: proc(p: Paddle) -> rl.Rectangle {
 		height = PADDLE_HEIGHT,
 	}
 }
-
 
 Ball :: struct {
 	position: rl.Vector2,
@@ -85,7 +82,6 @@ get_ball_rect :: proc(b: Ball) -> rl.Rectangle {
 	}
 }
 
-
 Ball_Trail :: struct {
 	positions: [30]rl.Vector2,
 }
@@ -108,7 +104,6 @@ draw_ball_trail :: proc(bt: Ball_Trail) {
 		rl.DrawCircleV(position, BALL_RADIUS * factor, rl.Fade(rl.BLUE, factor))
 	}
 }
-
 
 Game_State :: enum {
 	Pause,
@@ -248,16 +243,14 @@ draw_game :: proc(g: Game) {
 	}
 }
 
-
 main :: proc() {
 	rl.InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Pong")
 	defer rl.CloseWindow()
+	rl.SetExitKey(rl.KeyboardKey.KEY_NULL)
+	rl.SetTargetFPS(60)
 
 	rl.InitAudioDevice()
 	defer rl.CloseAudioDevice()
-
-	rl.SetExitKey(rl.KeyboardKey.KEY_NULL)
-	rl.SetTargetFPS(60)
 
 	game := create_game()
 	serve_ball(&game.ball, 1)
