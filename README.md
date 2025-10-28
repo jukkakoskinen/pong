@@ -2,6 +2,8 @@
 
 A simple game of Pong made using Odin and Raylib.
 
+![Pong](.github/screenshots/1.png)
+
 ## Running
 
 `odin run src -out:bin/pong`
